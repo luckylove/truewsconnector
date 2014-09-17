@@ -15,12 +15,39 @@
                         <param name="keyValue" value=""/>
                     </params>
                 </service>
+                <service name="searchTruProfile">
+                    <endpoint>
+                        <![CDATA[http://172.19.195.57:10001/MCPServicesENV3/services/CustomerServices?wsdl]]>
+                    </endpoint>
+                    <username>AICM</username>
+                    <password>AICMOPER</password>
+                    <params>
+                        <param name="userId" value=""/>
+                        <param name="password" value=""/>
+                        <param name="searchType" value=""/>
+                        <param name="keyValue" value=""/>
+                    </params>
+                </service>
 
             </webService>
         </env>
         <env name="PRO">
             <webService>
                 <service name="searchTmvProfile">
+                    <endpoint>
+                        <![CDATA[http://172.19.195.57:10001/MCPServicesENV3/services/CustomerServices?wsdl]]>
+                    </endpoint>
+                    <username>AICM</username>
+                    <password>AICMOPER</password>
+                    <params>
+                        <param name="userId" value=""/>
+                        <param name="password" value=""/>
+                        <param name="searchType" value=""/>
+                        <param name="keyValue" value=""/>
+                    </params>
+                </service>
+
+                <service name="searchTruProfile">
                     <endpoint>
                         <![CDATA[http://172.19.195.57:10001/MCPServicesENV3/services/CustomerServices?wsdl]]>
                     </endpoint>

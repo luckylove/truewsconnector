@@ -12,7 +12,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import th.co.tit.ccbint.balance.datatype.TmvCustomerServiceInfo;
+import th.co.tit.ccbint.balance.datatype.TruCustomerServiceInfo;
+import th.co.tit.ccbint.balance.datatype.TvsCustomerServiceInfo;
 import th.co.tit.ccbint.mcp.webservices.SearchTmvProfile;
+import th.co.tit.ccbint.mcp.webservices.SearchTruProfile;
+import th.co.tit.ccbint.mcp.webservices.SearchTvsProfile;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -85,6 +89,14 @@ public class TRUEWService {
 
     public static WSObject<TmvCustomerServiceInfo> searchTmvProfile(String _sessionId, SearchTmvProfile inParams) {
         return CustomerService.searchTmvProfile(_sessionId, activeEnv.getWebServiceConfig(), inParams);
+    }
+
+    public static WSObject<TruCustomerServiceInfo> searchTruProfile(String _sessionId, SearchTruProfile inParams) {
+        return CustomerService.searchTruProfile(_sessionId, activeEnv.getWebServiceConfig(), inParams);
+    }
+
+    public static WSObject<TvsCustomerServiceInfo> searchTvsProfile(String _sessionId, SearchTvsProfile inParams) {
+        return CustomerService.searchTvsProfile(_sessionId, activeEnv.getWebServiceConfig(), inParams);
     }
 
     public static void reloadConfig() {
