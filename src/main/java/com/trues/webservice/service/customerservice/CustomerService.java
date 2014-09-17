@@ -10,10 +10,6 @@ import org.apache.axis2.transport.http.HttpTransportProperties;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import th.co.tit.ccbint.balance.datatype.TmvCustomerServiceInfo;
-import th.co.tit.ccbint.balance.datatype.TruCustomerServiceInfo;
-import th.co.tit.ccbint.balance.datatype.TvsCustomerServiceInfo;
-import th.co.tit.ccbint.mcp.webservices.*;
 
 import java.util.Map;
 
@@ -24,10 +20,10 @@ public class CustomerService {
 
     private static Logger logger = LoggerFactory.getLogger(CustomerService.class);
 
-    public static WSObject<TmvCustomerServiceInfo> searchTmvProfile(String _sessionId, WebServiceConfig configs, SearchTmvProfile inParams) {
+    public static WSObject<CustomerServicesServiceStub.TmvCustomerServiceInfo> searchTmvProfile(String _sessionId, WebServiceConfig configs, CustomerServicesServiceStub.SearchTmvProfile inParams) {
         String methodName = "searchTmvProfile";
         Service cf = configs.looupService(methodName);
-        WSObject<TmvCustomerServiceInfo> result = new WSObject<TmvCustomerServiceInfo>();
+        WSObject<CustomerServicesServiceStub.TmvCustomerServiceInfo> result = new WSObject<CustomerServicesServiceStub.TmvCustomerServiceInfo>();
         if (cf != null) {
             try {
                 CustomerServicesServiceStub stub = new CustomerServicesServiceStub(cf.getEndpoint());
@@ -46,14 +42,13 @@ public class CustomerService {
                 //override by default param
                 Map<String, Param> params = cf.getParams();
                 if (inParams == null) {
-                    inParams = new SearchTmvProfile();
+                    inParams = new CustomerServicesServiceStub.SearchTmvProfile();
                 }
-
-                TRUEUtils.overrideFromParams(inParams, params);
+                TRUEUtils.overrideFromParams(inParams, params, "local", true);
                 TRUELogUtil.printInput(logger, _sessionId, methodName, cf, null, inParams);
 
-                SearchTmvProfileResponse tmvProfileResponse = stub.searchTmvProfile(inParams);
-                result.setResult(tmvProfileResponse.getSearchTmvProfileReturn());
+                CustomerServicesServiceStub.SearchTmvProfileResponse searchTmvProfileResponse = stub.searchTmvProfile(inParams);
+                result.setResult(searchTmvProfileResponse.getSearchTmvProfileReturn());
 
             } catch (Exception e) {
                 result.setErrorCode(1);
@@ -69,7 +64,7 @@ public class CustomerService {
         return result;
     }
 
-    public static WSObject<TruCustomerServiceInfo> searchTruProfile(String _sessionId, WebServiceConfig configs, SearchTruProfile inParams) {
+  /*  public static WSObject<TruCustomerServiceInfo> searchTruProfile(String _sessionId, WebServiceConfig configs, SearchTruProfile inParams) {
         String methodName = "searchTruProfile";
         Service cf = configs.looupService(methodName);
         WSObject<TruCustomerServiceInfo> result = new WSObject<TruCustomerServiceInfo>();
@@ -157,5 +152,5 @@ public class CustomerService {
         }
         TRUELogUtil.printOutput(logger, _sessionId, methodName, result, null);
         return result;
-    }
+    }*/
 }

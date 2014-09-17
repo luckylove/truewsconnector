@@ -4,15 +4,15 @@
             <webService>
                 <service name="searchTmvProfile">
                     <endpoint>
-                        <![CDATA[http://172.19.195.57:10001/MCPServicesENV3/services/CustomerServices?wsdl]]>
+                        <![CDATA[http://localhost:8888/index.jsp]]>
                     </endpoint>
-                    <username>AICM</username>
-                    <password>AICMOPER</password>
+                    <username></username>
+                    <password></password>
                     <params>
-                        <param name="userId" value=""/>
-                        <param name="password" value=""/>
-                        <param name="searchType" value=""/>
-                        <param name="keyValue" value=""/>
+                        <param name="userId" value="123"/>
+                        <param name="password" value="234"/>
+                        <param name="searchType" value="aaa"/>
+                        <param name="keyValue" value="bbb"/>
                     </params>
                 </service>
                 <service name="searchTruProfile">

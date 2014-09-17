@@ -130,6 +130,91 @@ public class TRUEUtils {
         }
     }
 
+    public static <T> void overrideFromParams(T config, Map<String, Param> defaultParams, String replace, boolean lowerFirst) {
+        Field[] fields = config.getClass().getDeclaredFields();
+        Map<String, Field> mapFields = new HashMap<String, Field>();
+        for (Field field : fields) {
+            mapFields.put(modifyFieldName(replace, lowerFirst, field.getName()), field);
+        }
+        //get one level supper class
+        if (config.getClass().getSuperclass() != null) {
+            Field[] supperFields = config.getClass().getSuperclass().getDeclaredFields();
+            for (Field field : supperFields) {
+                mapFields.put(modifyFieldName(replace, lowerFirst, field.getName()), field);
+            }
+        }
+        Set set = defaultParams.keySet();
+        Iterator it = set.iterator();
+        Method method, methodGet;
+        String key, key1, key2;
+        Type type;
+
+        while (it.hasNext()) {
+            key = (String) it.next();
+            key1 = upperCaseFirst(key);
+            Param obv = defaultParams.get(key);
+            Field configField = mapFields.get(key);
+            if (configField != null) {
+                try {
+                    method = config.getClass().getMethod(
+                            "set" + key1, new Class[]{configField.getType()});
+
+                    methodGet = config.getClass().getMethod(
+                            "get" + key1);
+
+                    Object ob = methodGet.invoke(config);
+                    type = configField.getGenericType();
+
+                    if (configField.getType().isPrimitive()) {
+                        //logger.info(String.format("override primitive params: name(%s), type(%s), value(%s)", configField.getName(), type, obv.getValue()));
+                        if ("long".equals(type.toString())) {
+                            if (((Long) ob).longValue() <= 0) {
+                                method.invoke(config, TRUEUtils.ob2l(obv.getValue()));
+                            }
+                        } else if ("int".equals(type.toString())) {
+                            if (((Integer) ob).intValue() <= 0) {
+                                method.invoke(config, TRUEUtils.ob2i(obv.getValue()));
+                            }
+
+                        } else if ("double".equals(type.toString())) {
+                            if (((Double) ob).doubleValue() <= 0) {
+                                method.invoke(config, TRUEUtils.ob2db(obv.getValue()));
+                            }
+                        }
+                    }  else if(ob == null){
+                        //logger.info(String.format("override object params: name(%s), type(%s), value(%s)", configField.getName(), type, obv.getValue()));
+                        //need override
+                        if (type.equals(Integer.class)) {
+                            method.invoke(config, TRUEUtils.ob2I(obv.getValue()));
+                        } else if (type.equals(Long.class)) {
+                            method.invoke(config, TRUEUtils.ob2L(obv.getValue()));
+                        } else if (type.equals(Date.class)) {
+                            method.invoke(config, TRUEUtils.ob2D(obv.getValue()));
+                        } else if (type.equals(Double.class)) {
+                            method.invoke(config, TRUEUtils.ob2Db(obv.getValue()));
+                        } else {
+                            method.invoke(config, TRUEUtils.ob2S(obv.getValue()));
+                        }
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private static String modifyFieldName(String replace, boolean lowerFist, String value) {
+        String rs = value;
+        if (StringUtils.isNotEmpty(replace)) {
+            rs = value.replace(replace, "");
+        }
+        if (lowerFist) {
+            rs = lowserCaseFirst(rs);
+        }
+        return rs;
+    }
+
     public static <T> void map2Object(T config, Map<String, Object> map) {
         Field[] fields = config.getClass().getDeclaredFields();
         Map<String, Field> mapFields = new HashMap<String, Field>();
