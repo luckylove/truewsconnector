@@ -5,10 +5,14 @@ import com.trues.webservice.config.model.Env;
 import com.trues.webservice.config.model.Environments;
 import com.trues.webservice.config.model.Service;
 import com.trues.webservice.config.model.WebServiceConfig;
+import com.trues.webservice.service.customerservice.CustomerService;
+import com.trues.webservice.service.model.WSObject;
 import com.trues.webservice.util.TRUEUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
+import th.co.tit.ccbint.balance.datatype.TmvCustomerServiceInfo;
+import th.co.tit.ccbint.mcp.webservices.SearchTmvProfile;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -77,6 +81,10 @@ public class TRUEWService {
             System.setProperty("axis.socketSecureFactory",
                     "org.apache.axis.components.net.SunFakeTrustSocketFactory");
         }
+    }
+
+    public static WSObject<TmvCustomerServiceInfo> searchTmvProfile(String _sessionId, SearchTmvProfile inParams) {
+        return CustomerService.searchTmvProfile(_sessionId, activeEnv.getWebServiceConfig(), inParams);
     }
 
     public static void reloadConfig() {
