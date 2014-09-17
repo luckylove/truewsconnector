@@ -1,0 +1,25 @@
+<resources>
+    <environments active="UAT">
+        <env name="UAT" keyStore="c:\\Users\\Nguyen\\Downloads\\staging-ipay\\aisserver.keystore">
+            <webService>
+
+                <service name="O2C.updateInteractResponseIVR">
+                    <endpoint>
+                        <![CDATA[http://172.16.252.55:7600/USSDIVRInteractService/services/USSDIVRInteract.USSDIVRInteractHttpSoap11Endpoint]]>
+                    </endpoint>
+                    <username></username>
+                    <password></password>
+                    <params>
+                        <param name="mobileNo" value="0806512227"/>
+                    </params>
+                </service>
+
+            </webService>
+        </env>
+        <env name="PRO">
+            <webService>
+
+            </webService>
+        </env>
+    </environments>
+</resources>
