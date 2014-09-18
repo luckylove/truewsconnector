@@ -5,708 +5,708 @@
                   xmlns:tns2="http://datatype.mcp.ccbint.tit.co.th" xmlns:tns3="http://datatype.ccbint.tit.co.th"
                   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
                   xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-<!--WSDL created by Apache Axis version: 1.4
-Built on Apr 22, 2006 (06:55:48 PDT)-->
- <wsdl:types>
-  <schema elementFormDefault="qualified" targetNamespace="http://webservices.mcp.ccbint.tit.co.th" xmlns="http://www.w3.org/2001/XMLSchema">
-   <import namespace="http://datatype.ccbint.tit.co.th"/>
-   <import namespace="http://datatype.balance.ccbint.tit.co.th"/>
-   <import namespace="http://datatype.mcp.ccbint.tit.co.th"/>
-   <element name="searchTmvProfile">
-    <complexType>
-     <sequence>
-      <element name="userId" type="xsd:string"/>
-      <element name="password" type="xsd:string"/>
-      <element name="searchType" type="xsd:string"/>
-      <element name="keyValue" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="searchTmvProfileResponse">
-    <complexType>
-     <sequence>
-      <element name="searchTmvProfileReturn" type="tns1:TmvCustomerServiceInfo"/>
-     </sequence>
-    </complexType>
-   </element>
-   <complexType name="ArrayOf_tns2_TmvCustomerInfo">
-    <sequence>
-     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:TmvCustomerInfo"/>
-    </sequence>
-   </complexType>
-   <element name="searchAllCustomerProfile">
-    <complexType>
-     <sequence>
-      <element name="userId" type="xsd:string"/>
-      <element name="password" type="xsd:string"/>
-      <element name="searchType" type="xsd:string"/>
-      <element name="keyValue" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="searchAllCustomerProfileResponse">
-    <complexType>
-     <sequence>
-      <element name="searchAllCustomerProfileReturn" type="tns1:AllCustomerServiceInfo"/>
-     </sequence>
-    </complexType>
-   </element>
-   <complexType name="ArrayOf_tns2_BCTruCustomerInfo">
-    <sequence>
-     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:BCTruCustomerInfo"/>
-    </sequence>
-   </complexType>
-   <complexType name="ArrayOf_tns2_TruCustomerInfo">
-    <sequence>
-     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:TruCustomerInfo"/>
-    </sequence>
-   </complexType>
-   <complexType name="ArrayOf_tns2_TvsCustomerInfo">
-    <sequence>
-     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:TvsCustomerInfo"/>
-    </sequence>
-   </complexType>
-   <element name="searchTruProfile">
-    <complexType>
-     <sequence>
-      <element name="userId" type="xsd:string"/>
-      <element name="password" type="xsd:string"/>
-      <element name="searchType" type="xsd:string"/>
-      <element name="keyValue" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="searchTruProfileResponse">
-    <complexType>
-     <sequence>
-      <element name="searchTruProfileReturn" type="tns1:TruCustomerServiceInfo"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="searchTvsProfile">
-    <complexType>
-     <sequence>
-      <element name="userId" type="xsd:string"/>
-      <element name="password" type="xsd:string"/>
-      <element name="searchType" type="xsd:string"/>
-      <element name="keyValue" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="searchTvsProfileResponse">
-    <complexType>
-     <sequence>
-      <element name="searchTvsProfileReturn" type="tns1:TvsCustomerServiceInfo"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="searchCustContactByMobile">
-    <complexType>
-     <sequence>
-      <element name="userId" type="xsd:string"/>
-      <element name="password" type="xsd:string"/>
-      <element name="searchType" type="xsd:string"/>
-      <element name="keyValue" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="searchCustContactByMobileResponse">
-    <complexType>
-     <sequence>
-      <element name="searchCustContactByMobileReturn" type="tns1:CustomerContactSrvInfo"/>
-     </sequence>
-    </complexType>
-   </element>
-   <complexType name="ArrayOf_tns3_SieContactInfo">
-    <sequence>
-     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:SieContactInfo"/>
-    </sequence>
-   </complexType>
-   <complexType name="ArrayOf_tns2_SieContactSrv">
-    <sequence>
-     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:SieContactSrv"/>
-    </sequence>
-   </complexType>
-   <element name="searchCustContactByProduct">
-    <complexType>
-     <sequence>
-      <element name="userId" type="xsd:string"/>
-      <element name="password" type="xsd:string"/>
-      <element name="searchType" type="xsd:string"/>
-      <element name="keyValue" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="searchCustContactByProductResponse">
-    <complexType>
-     <sequence>
-      <element name="searchCustContactByProductReturn" type="tns1:CustomerContactSrvInfo"/>
-     </sequence>
-    </complexType>
-   </element>
-  </schema>
-  <schema elementFormDefault="qualified" targetNamespace="http://datatype.mcp.ccbint.tit.co.th" xmlns="http://www.w3.org/2001/XMLSchema">
-   <import namespace="http://datatype.ccbint.tit.co.th"/>
-   <import namespace="http://webservices.mcp.ccbint.tit.co.th"/>
-   <import namespace="http://datatype.balance.ccbint.tit.co.th"/>
-   <complexType name="TmvCustomerInfo">
-    <sequence>
-     <element name="BCBan" nillable="true" type="xsd:string"/>
-     <element name="accCategory" nillable="true" type="xsd:string"/>
-     <element name="accountSubType" nillable="true" type="xsd:string"/>
-     <element name="accountType" nillable="true" type="xsd:string"/>
-     <element name="activityCode" nillable="true" type="xsd:string"/>
-     <element name="arBalance" nillable="true" type="xsd:decimal"/>
-     <element name="ban" nillable="true" type="xsd:string"/>
-     <element name="banStatus" nillable="true" type="xsd:string"/>
-     <element name="blackListInd" nillable="true" type="xsd:string"/>
-     <element name="blackListLevel" nillable="true" type="xsd:string"/>
-     <element name="blackListReason" nillable="true" type="xsd:string"/>
-     <element name="certificateID" nillable="true" type="xsd:string"/>
-     <element name="certificateType" nillable="true" type="xsd:string"/>
-     <element name="collectionStatus" nillable="true" type="xsd:string"/>
-     <element name="companyCode" nillable="true" type="xsd:string"/>
-     <element name="consolidateInd" nillable="true" type="xsd:string"/>
-     <element name="creditLimit" nillable="true" type="xsd:decimal"/>
-     <element name="email" nillable="true" type="xsd:string"/>
-     <element name="firstName" nillable="true" type="xsd:string"/>
-     <element name="grading" nillable="true" type="xsd:string"/>
-     <element name="gradingDesc" nillable="true" type="xsd:string"/>
-     <element name="homeTelNo" nillable="true" type="xsd:string"/>
-     <element name="idGrading" nillable="true" type="xsd:string"/>
-     <element name="lastName" nillable="true" type="xsd:string"/>
-     <element name="nameTitle" nillable="true" type="xsd:string"/>
-     <element name="nameTitleDesc" nillable="true" type="xsd:string"/>
-     <element name="parentBan" nillable="true" type="xsd:string"/>
-     <element name="paymentDesc" nillable="true" type="xsd:string"/>
-     <element name="paymentMethod" nillable="true" type="xsd:string"/>
-     <element name="reasonCode" nillable="true" type="xsd:string"/>
-     <element name="reasonDesc" nillable="true" type="xsd:string"/>
-     <element name="serviceStartDate" nillable="true" type="xsd:string"/>
-     <element name="statusDate" nillable="true" type="xsd:string"/>
-     <element name="subMethod" nillable="true" type="xsd:string"/>
-     <element name="suspendType" nillable="true" type="xsd:string"/>
-     <element name="treeRootBan" nillable="true" type="xsd:string"/>
-     <element name="vatExempt" nillable="true" type="xsd:string"/>
-     <element name="workTelNo" nillable="true" type="xsd:string"/>
-     <element name="workTnExtNo" nillable="true" type="xsd:string"/>
-    </sequence>
-   </complexType>
-   <complexType name="TmvCustomerInfoList">
-    <sequence>
-     <element name="rowCount" type="xsd:int"/>
-     <element name="tmvCustomerInfo" nillable="true" type="impl:ArrayOf_tns2_TmvCustomerInfo"/>
-    </sequence>
-   </complexType>
-   <complexType name="BCTruCustomerInfo">
-    <sequence>
-     <element name="BCBan" nillable="true" type="xsd:string"/>
-     <element name="accCategory" nillable="true" type="xsd:string"/>
-     <element name="accountSubType" nillable="true" type="xsd:string"/>
-     <element name="accountType" nillable="true" type="xsd:string"/>
-     <element name="activityCode" nillable="true" type="xsd:string"/>
-     <element name="arBalance" nillable="true" type="xsd:decimal"/>
-     <element name="ban" nillable="true" type="xsd:string"/>
-     <element name="banStatus" nillable="true" type="xsd:string"/>
-     <element name="blackListInd" nillable="true" type="xsd:string"/>
-     <element name="blackListLevel" nillable="true" type="xsd:string"/>
-     <element name="blackListReason" nillable="true" type="xsd:string"/>
-     <element name="certificateID" nillable="true" type="xsd:string"/>
-     <element name="certificateType" nillable="true" type="xsd:string"/>
-     <element name="collectionStatus" nillable="true" type="xsd:string"/>
-     <element name="companyCode" nillable="true" type="xsd:string"/>
-     <element name="consolidateInd" nillable="true" type="xsd:string"/>
-     <element name="creditLimit" nillable="true" type="xsd:decimal"/>
-     <element name="email" nillable="true" type="xsd:string"/>
-     <element name="firstName" nillable="true" type="xsd:string"/>
-     <element name="grading" nillable="true" type="xsd:string"/>
-     <element name="gradingDesc" nillable="true" type="xsd:string"/>
-     <element name="homeTelNo" nillable="true" type="xsd:string"/>
-     <element name="idGrading" nillable="true" type="xsd:string"/>
-     <element name="lastName" nillable="true" type="xsd:string"/>
-     <element name="nameTitle" nillable="true" type="xsd:string"/>
-     <element name="nameTitleDesc" nillable="true" type="xsd:string"/>
-     <element name="parentBan" nillable="true" type="xsd:string"/>
-     <element name="paymentDesc" nillable="true" type="xsd:string"/>
-     <element name="paymentMethod" nillable="true" type="xsd:string"/>
-     <element name="reasonCode" nillable="true" type="xsd:string"/>
-     <element name="reasonDesc" nillable="true" type="xsd:string"/>
-     <element name="serviceStartDate" nillable="true" type="xsd:string"/>
-     <element name="statusDate" nillable="true" type="xsd:string"/>
-     <element name="subMethod" nillable="true" type="xsd:string"/>
-     <element name="suspendType" nillable="true" type="xsd:string"/>
-     <element name="treeRootBan" nillable="true" type="xsd:string"/>
-     <element name="vatExempt" nillable="true" type="xsd:string"/>
-     <element name="workTelNo" nillable="true" type="xsd:string"/>
-     <element name="workTnExtNo" nillable="true" type="xsd:string"/>
-    </sequence>
-   </complexType>
-   <complexType name="BCTruCustomerInfoList">
-    <sequence>
-     <element name="BCTruCustomerInfo" nillable="true" type="impl:ArrayOf_tns2_BCTruCustomerInfo"/>
-     <element name="rowCount" type="xsd:int"/>
-    </sequence>
-   </complexType>
-   <complexType name="TruCustomerInfo">
-    <sequence>
-     <element name="BCBan" nillable="true" type="xsd:string"/>
-     <element name="accCategory" nillable="true" type="xsd:string"/>
-     <element name="accountSubType" nillable="true" type="xsd:string"/>
-     <element name="accountType" nillable="true" type="xsd:string"/>
-     <element name="activityCode" nillable="true" type="xsd:string"/>
-     <element name="arBalance" nillable="true" type="xsd:decimal"/>
-     <element name="ban" nillable="true" type="xsd:string"/>
-     <element name="banStatus" nillable="true" type="xsd:string"/>
-     <element name="blackListInd" nillable="true" type="xsd:string"/>
-     <element name="blackListLevel" nillable="true" type="xsd:string"/>
-     <element name="blackListReason" nillable="true" type="xsd:string"/>
-     <element name="certificateID" nillable="true" type="xsd:string"/>
-     <element name="certificateType" nillable="true" type="xsd:string"/>
-     <element name="collectionStatus" nillable="true" type="xsd:string"/>
-     <element name="companyCode" nillable="true" type="xsd:string"/>
-     <element name="consolidateInd" nillable="true" type="xsd:string"/>
-     <element name="creditLimit" nillable="true" type="xsd:decimal"/>
-     <element name="email" nillable="true" type="xsd:string"/>
-     <element name="firstName" nillable="true" type="xsd:string"/>
-     <element name="grading" nillable="true" type="xsd:string"/>
-     <element name="gradingDesc" nillable="true" type="xsd:string"/>
-     <element name="homeTelNo" nillable="true" type="xsd:string"/>
-     <element name="idGrading" nillable="true" type="xsd:string"/>
-     <element name="lastName" nillable="true" type="xsd:string"/>
-     <element name="nameTitle" nillable="true" type="xsd:string"/>
-     <element name="nameTitleDesc" nillable="true" type="xsd:string"/>
-     <element name="parentBan" nillable="true" type="xsd:string"/>
-     <element name="paymentDesc" nillable="true" type="xsd:string"/>
-     <element name="paymentMethod" nillable="true" type="xsd:string"/>
-     <element name="reasonCode" nillable="true" type="xsd:string"/>
-     <element name="reasonDesc" nillable="true" type="xsd:string"/>
-     <element name="serviceStartDate" nillable="true" type="xsd:string"/>
-     <element name="statusDate" nillable="true" type="xsd:string"/>
-     <element name="subMethod" nillable="true" type="xsd:string"/>
-     <element name="suspendType" nillable="true" type="xsd:string"/>
-     <element name="treeRootBan" nillable="true" type="xsd:string"/>
-     <element name="vatExempt" nillable="true" type="xsd:string"/>
-     <element name="workTelNo" nillable="true" type="xsd:string"/>
-     <element name="workTnExtNo" nillable="true" type="xsd:string"/>
-    </sequence>
-   </complexType>
-   <complexType name="TruCustomerInfoList">
-    <sequence>
-     <element name="rowCount" type="xsd:int"/>
-     <element name="truCustomerInfo" nillable="true" type="impl:ArrayOf_tns2_TruCustomerInfo"/>
-    </sequence>
-   </complexType>
-   <complexType name="TvsCustomerInfo">
-    <sequence>
-     <element name="arpa" nillable="true" type="xsd:decimal"/>
-     <element name="birthDate" nillable="true" type="xsd:string"/>
-     <element name="customerGroup" nillable="true" type="xsd:string"/>
-     <element name="customerNo" nillable="true" type="xsd:string"/>
-     <element name="customerType" nillable="true" type="xsd:string"/>
-     <element name="firstName" nillable="true" type="xsd:string"/>
-     <element name="gender" nillable="true" type="xsd:string"/>
-     <element name="idGrading" nillable="true" type="xsd:string"/>
-     <element name="idNumber" nillable="true" type="xsd:string"/>
-     <element name="idType" nillable="true" type="xsd:string"/>
-     <element name="paymentMethod" nillable="true" type="xsd:string"/>
-     <element name="paymentProfile" nillable="true" type="xsd:string"/>
-     <element name="paymentTerm" nillable="true" type="xsd:string"/>
-     <element name="surName" nillable="true" type="xsd:string"/>
-     <element name="title" nillable="true" type="xsd:string"/>
-     <element name="totBalance" nillable="true" type="xsd:decimal"/>
-    </sequence>
-   </complexType>
-   <complexType name="TvsCustomerInfoList">
-    <sequence>
-     <element name="rowCount" type="xsd:int"/>
-     <element name="tvsCustomerInfo" nillable="true" type="impl:ArrayOf_tns2_TvsCustomerInfo"/>
-    </sequence>
-   </complexType>
-   <complexType name="SieContactSrv">
-    <sequence>
-     <element name="sieContactInfoList" nillable="true" type="tns3:SieContactInfoList"/>
-    </sequence>
-   </complexType>
-   <complexType name="SieContactSrvList">
-    <sequence>
-     <element name="rowCount" type="xsd:int"/>
-     <element name="sieContactSrv" nillable="true" type="impl:ArrayOf_tns2_SieContactSrv"/>
-    </sequence>
-   </complexType>
-  </schema>
-  <schema elementFormDefault="qualified" targetNamespace="http://datatype.balance.ccbint.tit.co.th" xmlns="http://www.w3.org/2001/XMLSchema">
-   <import namespace="http://datatype.ccbint.tit.co.th"/>
-   <import namespace="http://webservices.mcp.ccbint.tit.co.th"/>
-   <import namespace="http://datatype.mcp.ccbint.tit.co.th"/>
-   <complexType name="TmvCustomerServiceInfo">
-    <sequence>
-     <element name="errorCode" nillable="true" type="xsd:string"/>
-     <element name="message" nillable="true" type="xsd:string"/>
-     <element name="refreshTime" nillable="true" type="xsd:string"/>
-     <element name="tmvCustomerList" nillable="true" type="tns2:TmvCustomerInfoList"/>
-     <element name="transactionID" nillable="true" type="xsd:string"/>
-    </sequence>
-   </complexType>
-   <complexType name="AllCustomerServiceInfo">
-    <sequence>
-     <element name="BCTruCustomerInfoList" nillable="true" type="tns2:BCTruCustomerInfoList"/>
-     <element name="errorCode" nillable="true" type="xsd:string"/>
-     <element name="message" nillable="true" type="xsd:string"/>
-     <element name="refreshTime" nillable="true" type="xsd:string"/>
-     <element name="tmvCustomerInfoList" nillable="true" type="tns2:TmvCustomerInfoList"/>
-     <element name="transactionID" nillable="true" type="xsd:string"/>
-     <element name="truCustomerInfoList" nillable="true" type="tns2:TruCustomerInfoList"/>
-     <element name="tvsCustomerInfoList" nillable="true" type="tns2:TvsCustomerInfoList"/>
-    </sequence>
-   </complexType>
-   <complexType name="TruCustomerServiceInfo">
-    <sequence>
-     <element name="errorCode" nillable="true" type="xsd:string"/>
-     <element name="message" nillable="true" type="xsd:string"/>
-     <element name="refreshTime" nillable="true" type="xsd:string"/>
-     <element name="transactionID" nillable="true" type="xsd:string"/>
-     <element name="truCustomerList" nillable="true" type="tns2:TruCustomerInfoList"/>
-    </sequence>
-   </complexType>
-   <complexType name="TvsCustomerServiceInfo">
-    <sequence>
-     <element name="errorCode" nillable="true" type="xsd:string"/>
-     <element name="message" nillable="true" type="xsd:string"/>
-     <element name="refreshTime" nillable="true" type="xsd:string"/>
-     <element name="transactionID" nillable="true" type="xsd:string"/>
-     <element name="tvsCustomerList" nillable="true" type="tns2:TvsCustomerInfoList"/>
-    </sequence>
-   </complexType>
-   <complexType name="CustomerContactSrvInfo">
-    <sequence>
-     <element name="errorCode" nillable="true" type="xsd:string"/>
-     <element name="message" nillable="true" type="xsd:string"/>
-     <element name="refreshTime" nillable="true" type="xsd:string"/>
-     <element name="sieContactSrvList" nillable="true" type="tns2:SieContactSrvList"/>
-     <element name="tmvCustomerList" nillable="true" type="tns2:TmvCustomerInfoList"/>
-     <element name="transactionID" nillable="true" type="xsd:string"/>
-     <element name="truCustomerList" nillable="true" type="tns2:TruCustomerInfoList"/>
-    </sequence>
-   </complexType>
-  </schema>
-  <schema elementFormDefault="qualified" targetNamespace="http://datatype.ccbint.tit.co.th" xmlns="http://www.w3.org/2001/XMLSchema">
-   <import namespace="http://webservices.mcp.ccbint.tit.co.th"/>
-   <import namespace="http://datatype.balance.ccbint.tit.co.th"/>
-   <import namespace="http://datatype.mcp.ccbint.tit.co.th"/>
-   <complexType name="SieContactInfo">
-    <sequence>
-     <element name="assetPhNum" nillable="true" type="xsd:string"/>
-     <element name="cellPhNum" nillable="true" type="xsd:string"/>
-     <element name="email" nillable="true" type="xsd:string"/>
-     <element name="faxPhNum" nillable="true" type="xsd:string"/>
-     <element name="firstName" nillable="true" type="xsd:string"/>
-     <element name="lastName" nillable="true" type="xsd:string"/>
-     <element name="workPhNum" nillable="true" type="xsd:string"/>
-    </sequence>
-   </complexType>
-   <complexType name="SieContactInfoList">
-    <sequence>
-     <element name="rowCount" type="xsd:int"/>
-     <element name="sieContactInfo" nillable="true" type="impl:ArrayOf_tns3_SieContactInfo"/>
-    </sequence>
-   </complexType>
-  </schema>
- </wsdl:types>
-
-   <wsdl:message name="searchCustContactByMobileResponse">
-
-      <wsdl:part element="impl:searchCustContactByMobileResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="searchTruProfileRequest">
-
-      <wsdl:part element="impl:searchTruProfile" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="searchTmvProfileRequest">
-
-      <wsdl:part element="impl:searchTmvProfile" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="searchAllCustomerProfileRequest">
-
-      <wsdl:part element="impl:searchAllCustomerProfile" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="searchTmvProfileResponse">
-
-      <wsdl:part element="impl:searchTmvProfileResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="searchTvsProfileResponse">
-
-      <wsdl:part element="impl:searchTvsProfileResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="searchCustContactByProductRequest">
-
-      <wsdl:part element="impl:searchCustContactByProduct" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="searchTvsProfileRequest">
-
-      <wsdl:part element="impl:searchTvsProfile" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="searchAllCustomerProfileResponse">
-
-      <wsdl:part element="impl:searchAllCustomerProfileResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="searchCustContactByMobileRequest">
-
-      <wsdl:part element="impl:searchCustContactByMobile" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="searchCustContactByProductResponse">
-
-      <wsdl:part element="impl:searchCustContactByProductResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="searchTruProfileResponse">
-
-      <wsdl:part element="impl:searchTruProfileResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:portType name="CustomerServices">
-
-      <wsdl:operation name="searchTmvProfile">
-
-         <wsdl:input message="impl:searchTmvProfileRequest" name="searchTmvProfileRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:searchTmvProfileResponse" name="searchTmvProfileResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="searchAllCustomerProfile">
-
-         <wsdl:input message="impl:searchAllCustomerProfileRequest" name="searchAllCustomerProfileRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:searchAllCustomerProfileResponse" name="searchAllCustomerProfileResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="searchTruProfile">
-
-         <wsdl:input message="impl:searchTruProfileRequest" name="searchTruProfileRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:searchTruProfileResponse" name="searchTruProfileResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="searchTvsProfile">
-
-         <wsdl:input message="impl:searchTvsProfileRequest" name="searchTvsProfileRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:searchTvsProfileResponse" name="searchTvsProfileResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="searchCustContactByMobile">
-
-         <wsdl:input message="impl:searchCustContactByMobileRequest" name="searchCustContactByMobileRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:searchCustContactByMobileResponse" name="searchCustContactByMobileResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="searchCustContactByProduct">
-
-         <wsdl:input message="impl:searchCustContactByProductRequest" name="searchCustContactByProductRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:searchCustContactByProductResponse" name="searchCustContactByProductResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-   </wsdl:portType>
-
-   <wsdl:binding name="CustomerServicesSoapBinding" type="impl:CustomerServices">
-
-      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-
-      <wsdl:operation name="searchTmvProfile">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="searchTmvProfileRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="searchTmvProfileResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="searchAllCustomerProfile">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="searchAllCustomerProfileRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="searchAllCustomerProfileResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="searchTruProfile">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="searchTruProfileRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="searchTruProfileResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="searchTvsProfile">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="searchTvsProfileRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="searchTvsProfileResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="searchCustContactByMobile">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="searchCustContactByMobileRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="searchCustContactByMobileResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="searchCustContactByProduct">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="searchCustContactByProductRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="searchCustContactByProductResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-   </wsdl:binding>
-
-   <wsdl:service name="CustomerServicesService">
-
-      <wsdl:port binding="impl:CustomerServicesSoapBinding" name="CustomerServices">
-
-         <wsdlsoap:address location="http://172.19.195.57:10001/MCPServicesENV3/services/CustomerServices"/>
-
-      </wsdl:port>
-
-   </wsdl:service>
+    <!--WSDL created by Apache Axis version: 1.4
+    Built on Apr 22, 2006 (06:55:48 PDT)-->
+    <wsdl:types>
+        <schema elementFormDefault="qualified" targetNamespace="http://webservices.mcp.ccbint.tit.co.th" xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://datatype.ccbint.tit.co.th"/>
+            <import namespace="http://datatype.balance.ccbint.tit.co.th"/>
+            <import namespace="http://datatype.mcp.ccbint.tit.co.th"/>
+            <element name="searchTmvProfile">
+                <complexType>
+                    <sequence>
+                        <element name="userId" type="xsd:string"/>
+                        <element name="password" type="xsd:string"/>
+                        <element name="searchType" type="xsd:string"/>
+                        <element name="keyValue" type="xsd:string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="searchTmvProfileResponse">
+                <complexType>
+                    <sequence>
+                        <element name="searchTmvProfileReturn" type="tns1:TmvCustomerServiceInfo"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <complexType name="ArrayOf_tns2_TmvCustomerInfo">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0" name="tmvCustomerInfo" type="tns2:TmvCustomerInfo"/>
+                </sequence>
+            </complexType>
+            <element name="searchAllCustomerProfile">
+                <complexType>
+                    <sequence>
+                        <element name="userId" type="xsd:string"/>
+                        <element name="password" type="xsd:string"/>
+                        <element name="searchType" type="xsd:string"/>
+                        <element name="keyValue" type="xsd:string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="searchAllCustomerProfileResponse">
+                <complexType>
+                    <sequence>
+                        <element name="searchAllCustomerProfileReturn" type="tns1:AllCustomerServiceInfo"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <complexType name="ArrayOf_tns2_BCTruCustomerInfo">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:BCTruCustomerInfo"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOf_tns2_TruCustomerInfo">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0" name="truCustomerInfo" type="tns2:TruCustomerInfo"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOf_tns2_TvsCustomerInfo">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0" name="tvsCustomerInfo" type="tns2:TvsCustomerInfo"/>
+                </sequence>
+            </complexType>
+            <element name="searchTruProfile">
+                <complexType>
+                    <sequence>
+                        <element name="userId" type="xsd:string"/>
+                        <element name="password" type="xsd:string"/>
+                        <element name="searchType" type="xsd:string"/>
+                        <element name="keyValue" type="xsd:string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="searchTruProfileResponse">
+                <complexType>
+                    <sequence>
+                        <element name="searchTruProfileReturn" type="tns1:TruCustomerServiceInfo"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="searchTvsProfile">
+                <complexType>
+                    <sequence>
+                        <element name="userId" type="xsd:string"/>
+                        <element name="password" type="xsd:string"/>
+                        <element name="searchType" type="xsd:string"/>
+                        <element name="keyValue" type="xsd:string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="searchTvsProfileResponse">
+                <complexType>
+                    <sequence>
+                        <element name="searchTvsProfileReturn" type="tns1:TvsCustomerServiceInfo"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="searchCustContactByMobile">
+                <complexType>
+                    <sequence>
+                        <element name="userId" type="xsd:string"/>
+                        <element name="password" type="xsd:string"/>
+                        <element name="searchType" type="xsd:string"/>
+                        <element name="keyValue" type="xsd:string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="searchCustContactByMobileResponse">
+                <complexType>
+                    <sequence>
+                        <element name="searchCustContactByMobileReturn" type="tns1:CustomerContactSrvInfo"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <complexType name="ArrayOf_tns3_SieContactInfo">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:SieContactInfo"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOf_tns2_SieContactSrv">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:SieContactSrv"/>
+                </sequence>
+            </complexType>
+            <element name="searchCustContactByProduct">
+                <complexType>
+                    <sequence>
+                        <element name="userId" type="xsd:string"/>
+                        <element name="password" type="xsd:string"/>
+                        <element name="searchType" type="xsd:string"/>
+                        <element name="keyValue" type="xsd:string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="searchCustContactByProductResponse">
+                <complexType>
+                    <sequence>
+                        <element name="searchCustContactByProductReturn" type="tns1:CustomerContactSrvInfo"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+        <schema elementFormDefault="qualified" targetNamespace="http://datatype.mcp.ccbint.tit.co.th" xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://datatype.ccbint.tit.co.th"/>
+            <import namespace="http://webservices.mcp.ccbint.tit.co.th"/>
+            <import namespace="http://datatype.balance.ccbint.tit.co.th"/>
+            <complexType name="TmvCustomerInfo">
+                <sequence>
+                    <element name="BCBan" nillable="true" type="xsd:string"/>
+                    <element name="accCategory" nillable="true" type="xsd:string"/>
+                    <element name="accountSubType" nillable="true" type="xsd:string"/>
+                    <element name="accountType" nillable="true" type="xsd:string"/>
+                    <element name="activityCode" nillable="true" type="xsd:string"/>
+                    <element name="arBalance" nillable="true" type="xsd:decimal"/>
+                    <element name="ban" nillable="true" type="xsd:string"/>
+                    <element name="banStatus" nillable="true" type="xsd:string"/>
+                    <element name="blackListInd" nillable="true" type="xsd:string"/>
+                    <element name="blackListLevel" nillable="true" type="xsd:string"/>
+                    <element name="blackListReason" nillable="true" type="xsd:string"/>
+                    <element name="certificateID" nillable="true" type="xsd:string"/>
+                    <element name="certificateType" nillable="true" type="xsd:string"/>
+                    <element name="collectionStatus" nillable="true" type="xsd:string"/>
+                    <element name="companyCode" nillable="true" type="xsd:string"/>
+                    <element name="consolidateInd" nillable="true" type="xsd:string"/>
+                    <element name="creditLimit" nillable="true" type="xsd:decimal"/>
+                    <element name="email" nillable="true" type="xsd:string"/>
+                    <element name="firstName" nillable="true" type="xsd:string"/>
+                    <element name="grading" nillable="true" type="xsd:string"/>
+                    <element name="gradingDesc" nillable="true" type="xsd:string"/>
+                    <element name="homeTelNo" nillable="true" type="xsd:string"/>
+                    <element name="idGrading" nillable="true" type="xsd:string"/>
+                    <element name="lastName" nillable="true" type="xsd:string"/>
+                    <element name="nameTitle" nillable="true" type="xsd:string"/>
+                    <element name="nameTitleDesc" nillable="true" type="xsd:string"/>
+                    <element name="parentBan" nillable="true" type="xsd:string"/>
+                    <element name="paymentDesc" nillable="true" type="xsd:string"/>
+                    <element name="paymentMethod" nillable="true" type="xsd:string"/>
+                    <element name="reasonCode" nillable="true" type="xsd:string"/>
+                    <element name="reasonDesc" nillable="true" type="xsd:string"/>
+                    <element name="serviceStartDate" nillable="true" type="xsd:string"/>
+                    <element name="statusDate" nillable="true" type="xsd:string"/>
+                    <element name="subMethod" nillable="true" type="xsd:string"/>
+                    <element name="suspendType" nillable="true" type="xsd:string"/>
+                    <element name="treeRootBan" nillable="true" type="xsd:string"/>
+                    <element name="vatExempt" nillable="true" type="xsd:string"/>
+                    <element name="workTelNo" nillable="true" type="xsd:string"/>
+                    <element name="workTnExtNo" nillable="true" type="xsd:string"/>
+                </sequence>
+            </complexType>
+            <complexType name="TmvCustomerInfoList">
+                <sequence>
+                    <element name="rowCount" type="xsd:int"/>
+                    <element name="tmvCustomerInfo" nillable="true" type="impl:ArrayOf_tns2_TmvCustomerInfo"/>
+                </sequence>
+            </complexType>
+            <complexType name="BCTruCustomerInfo">
+                <sequence>
+                    <element name="BCBan" nillable="true" type="xsd:string"/>
+                    <element name="accCategory" nillable="true" type="xsd:string"/>
+                    <element name="accountSubType" nillable="true" type="xsd:string"/>
+                    <element name="accountType" nillable="true" type="xsd:string"/>
+                    <element name="activityCode" nillable="true" type="xsd:string"/>
+                    <element name="arBalance" nillable="true" type="xsd:decimal"/>
+                    <element name="ban" nillable="true" type="xsd:string"/>
+                    <element name="banStatus" nillable="true" type="xsd:string"/>
+                    <element name="blackListInd" nillable="true" type="xsd:string"/>
+                    <element name="blackListLevel" nillable="true" type="xsd:string"/>
+                    <element name="blackListReason" nillable="true" type="xsd:string"/>
+                    <element name="certificateID" nillable="true" type="xsd:string"/>
+                    <element name="certificateType" nillable="true" type="xsd:string"/>
+                    <element name="collectionStatus" nillable="true" type="xsd:string"/>
+                    <element name="companyCode" nillable="true" type="xsd:string"/>
+                    <element name="consolidateInd" nillable="true" type="xsd:string"/>
+                    <element name="creditLimit" nillable="true" type="xsd:decimal"/>
+                    <element name="email" nillable="true" type="xsd:string"/>
+                    <element name="firstName" nillable="true" type="xsd:string"/>
+                    <element name="grading" nillable="true" type="xsd:string"/>
+                    <element name="gradingDesc" nillable="true" type="xsd:string"/>
+                    <element name="homeTelNo" nillable="true" type="xsd:string"/>
+                    <element name="idGrading" nillable="true" type="xsd:string"/>
+                    <element name="lastName" nillable="true" type="xsd:string"/>
+                    <element name="nameTitle" nillable="true" type="xsd:string"/>
+                    <element name="nameTitleDesc" nillable="true" type="xsd:string"/>
+                    <element name="parentBan" nillable="true" type="xsd:string"/>
+                    <element name="paymentDesc" nillable="true" type="xsd:string"/>
+                    <element name="paymentMethod" nillable="true" type="xsd:string"/>
+                    <element name="reasonCode" nillable="true" type="xsd:string"/>
+                    <element name="reasonDesc" nillable="true" type="xsd:string"/>
+                    <element name="serviceStartDate" nillable="true" type="xsd:string"/>
+                    <element name="statusDate" nillable="true" type="xsd:string"/>
+                    <element name="subMethod" nillable="true" type="xsd:string"/>
+                    <element name="suspendType" nillable="true" type="xsd:string"/>
+                    <element name="treeRootBan" nillable="true" type="xsd:string"/>
+                    <element name="vatExempt" nillable="true" type="xsd:string"/>
+                    <element name="workTelNo" nillable="true" type="xsd:string"/>
+                    <element name="workTnExtNo" nillable="true" type="xsd:string"/>
+                </sequence>
+            </complexType>
+            <complexType name="BCTruCustomerInfoList">
+                <sequence>
+                    <element name="BCTruCustomerInfo" nillable="true" type="impl:ArrayOf_tns2_BCTruCustomerInfo"/>
+                    <element name="rowCount" type="xsd:int"/>
+                </sequence>
+            </complexType>
+            <complexType name="TruCustomerInfo">
+                <sequence>
+                    <element name="BCBan" nillable="true" type="xsd:string"/>
+                    <element name="accCategory" nillable="true" type="xsd:string"/>
+                    <element name="accountSubType" nillable="true" type="xsd:string"/>
+                    <element name="accountType" nillable="true" type="xsd:string"/>
+                    <element name="activityCode" nillable="true" type="xsd:string"/>
+                    <element name="arBalance" nillable="true" type="xsd:decimal"/>
+                    <element name="ban" nillable="true" type="xsd:string"/>
+                    <element name="banStatus" nillable="true" type="xsd:string"/>
+                    <element name="blackListInd" nillable="true" type="xsd:string"/>
+                    <element name="blackListLevel" nillable="true" type="xsd:string"/>
+                    <element name="blackListReason" nillable="true" type="xsd:string"/>
+                    <element name="certificateID" nillable="true" type="xsd:string"/>
+                    <element name="certificateType" nillable="true" type="xsd:string"/>
+                    <element name="collectionStatus" nillable="true" type="xsd:string"/>
+                    <element name="companyCode" nillable="true" type="xsd:string"/>
+                    <element name="consolidateInd" nillable="true" type="xsd:string"/>
+                    <element name="creditLimit" nillable="true" type="xsd:decimal"/>
+                    <element name="email" nillable="true" type="xsd:string"/>
+                    <element name="firstName" nillable="true" type="xsd:string"/>
+                    <element name="grading" nillable="true" type="xsd:string"/>
+                    <element name="gradingDesc" nillable="true" type="xsd:string"/>
+                    <element name="homeTelNo" nillable="true" type="xsd:string"/>
+                    <element name="idGrading" nillable="true" type="xsd:string"/>
+                    <element name="lastName" nillable="true" type="xsd:string"/>
+                    <element name="nameTitle" nillable="true" type="xsd:string"/>
+                    <element name="nameTitleDesc" nillable="true" type="xsd:string"/>
+                    <element name="parentBan" nillable="true" type="xsd:string"/>
+                    <element name="paymentDesc" nillable="true" type="xsd:string"/>
+                    <element name="paymentMethod" nillable="true" type="xsd:string"/>
+                    <element name="reasonCode" nillable="true" type="xsd:string"/>
+                    <element name="reasonDesc" nillable="true" type="xsd:string"/>
+                    <element name="serviceStartDate" nillable="true" type="xsd:string"/>
+                    <element name="statusDate" nillable="true" type="xsd:string"/>
+                    <element name="subMethod" nillable="true" type="xsd:string"/>
+                    <element name="suspendType" nillable="true" type="xsd:string"/>
+                    <element name="treeRootBan" nillable="true" type="xsd:string"/>
+                    <element name="vatExempt" nillable="true" type="xsd:string"/>
+                    <element name="workTelNo" nillable="true" type="xsd:string"/>
+                    <element name="workTnExtNo" nillable="true" type="xsd:string"/>
+                </sequence>
+            </complexType>
+            <complexType name="TruCustomerInfoList">
+                <sequence>
+                    <element name="rowCount" type="xsd:int"/>
+                    <element name="truCustomerInfo" nillable="true" type="impl:ArrayOf_tns2_TruCustomerInfo"/>
+                </sequence>
+            </complexType>
+            <complexType name="TvsCustomerInfo">
+                <sequence>
+                    <element name="arpa" nillable="true" type="xsd:decimal"/>
+                    <element name="birthDate" nillable="true" type="xsd:string"/>
+                    <element name="customerGroup" nillable="true" type="xsd:string"/>
+                    <element name="customerNo" nillable="true" type="xsd:string"/>
+                    <element name="customerType" nillable="true" type="xsd:string"/>
+                    <element name="firstName" nillable="true" type="xsd:string"/>
+                    <element name="gender" nillable="true" type="xsd:string"/>
+                    <element name="idGrading" nillable="true" type="xsd:string"/>
+                    <element name="idNumber" nillable="true" type="xsd:string"/>
+                    <element name="idType" nillable="true" type="xsd:string"/>
+                    <element name="paymentMethod" nillable="true" type="xsd:string"/>
+                    <element name="paymentProfile" nillable="true" type="xsd:string"/>
+                    <element name="paymentTerm" nillable="true" type="xsd:string"/>
+                    <element name="surName" nillable="true" type="xsd:string"/>
+                    <element name="title" nillable="true" type="xsd:string"/>
+                    <element name="totBalance" nillable="true" type="xsd:decimal"/>
+                </sequence>
+            </complexType>
+            <complexType name="TvsCustomerInfoList">
+                <sequence>
+                    <element name="rowCount" type="xsd:int"/>
+                    <element name="tvsCustomerInfo" nillable="true" type="impl:ArrayOf_tns2_TvsCustomerInfo"/>
+                </sequence>
+            </complexType>
+            <complexType name="SieContactSrv">
+                <sequence>
+                    <element name="sieContactInfoList" nillable="true" type="tns3:SieContactInfoList"/>
+                </sequence>
+            </complexType>
+            <complexType name="SieContactSrvList">
+                <sequence>
+                    <element name="rowCount" type="xsd:int"/>
+                    <element name="sieContactSrv" nillable="true" type="impl:ArrayOf_tns2_SieContactSrv"/>
+                </sequence>
+            </complexType>
+        </schema>
+        <schema elementFormDefault="qualified" targetNamespace="http://datatype.balance.ccbint.tit.co.th" xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://datatype.ccbint.tit.co.th"/>
+            <import namespace="http://webservices.mcp.ccbint.tit.co.th"/>
+            <import namespace="http://datatype.mcp.ccbint.tit.co.th"/>
+            <complexType name="TmvCustomerServiceInfo">
+                <sequence>
+                    <element name="errorCode" nillable="true" type="xsd:string"/>
+                    <element name="message" nillable="true" type="xsd:string"/>
+                    <element name="refreshTime" nillable="true" type="xsd:string"/>
+                    <element name="tmvCustomerList" nillable="true" type="tns2:TmvCustomerInfoList"/>
+                    <element name="transactionID" nillable="true" type="xsd:string"/>
+                </sequence>
+            </complexType>
+            <complexType name="AllCustomerServiceInfo">
+                <sequence>
+                    <element name="BCTruCustomerInfoList" nillable="true" type="tns2:BCTruCustomerInfoList"/>
+                    <element name="errorCode" nillable="true" type="xsd:string"/>
+                    <element name="message" nillable="true" type="xsd:string"/>
+                    <element name="refreshTime" nillable="true" type="xsd:string"/>
+                    <element name="tmvCustomerInfoList" nillable="true" type="tns2:TmvCustomerInfoList"/>
+                    <element name="transactionID" nillable="true" type="xsd:string"/>
+                    <element name="truCustomerInfoList" nillable="true" type="tns2:TruCustomerInfoList"/>
+                    <element name="tvsCustomerInfoList" nillable="true" type="tns2:TvsCustomerInfoList"/>
+                </sequence>
+            </complexType>
+            <complexType name="TruCustomerServiceInfo">
+                <sequence>
+                    <element name="errorCode" nillable="true" type="xsd:string"/>
+                    <element name="message" nillable="true" type="xsd:string"/>
+                    <element name="refreshTime" nillable="true" type="xsd:string"/>
+                    <element name="transactionID" nillable="true" type="xsd:string"/>
+                    <element name="truCustomerList" nillable="true" type="tns2:TruCustomerInfoList"/>
+                </sequence>
+            </complexType>
+            <complexType name="TvsCustomerServiceInfo">
+                <sequence>
+                    <element name="errorCode" nillable="true" type="xsd:string"/>
+                    <element name="message" nillable="true" type="xsd:string"/>
+                    <element name="refreshTime" nillable="true" type="xsd:string"/>
+                    <element name="transactionID" nillable="true" type="xsd:string"/>
+                    <element name="tvsCustomerList" nillable="true" type="tns2:TvsCustomerInfoList"/>
+                </sequence>
+            </complexType>
+            <complexType name="CustomerContactSrvInfo">
+                <sequence>
+                    <element name="errorCode" nillable="true" type="xsd:string"/>
+                    <element name="message" nillable="true" type="xsd:string"/>
+                    <element name="refreshTime" nillable="true" type="xsd:string"/>
+                    <element name="sieContactSrvList" nillable="true" type="tns2:SieContactSrvList"/>
+                    <element name="tmvCustomerList" nillable="true" type="tns2:TmvCustomerInfoList"/>
+                    <element name="transactionID" nillable="true" type="xsd:string"/>
+                    <element name="truCustomerList" nillable="true" type="tns2:TruCustomerInfoList"/>
+                </sequence>
+            </complexType>
+        </schema>
+        <schema elementFormDefault="qualified" targetNamespace="http://datatype.ccbint.tit.co.th" xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://webservices.mcp.ccbint.tit.co.th"/>
+            <import namespace="http://datatype.balance.ccbint.tit.co.th"/>
+            <import namespace="http://datatype.mcp.ccbint.tit.co.th"/>
+            <complexType name="SieContactInfo">
+                <sequence>
+                    <element name="assetPhNum" nillable="true" type="xsd:string"/>
+                    <element name="cellPhNum" nillable="true" type="xsd:string"/>
+                    <element name="email" nillable="true" type="xsd:string"/>
+                    <element name="faxPhNum" nillable="true" type="xsd:string"/>
+                    <element name="firstName" nillable="true" type="xsd:string"/>
+                    <element name="lastName" nillable="true" type="xsd:string"/>
+                    <element name="workPhNum" nillable="true" type="xsd:string"/>
+                </sequence>
+            </complexType>
+            <complexType name="SieContactInfoList">
+                <sequence>
+                    <element name="rowCount" type="xsd:int"/>
+                    <element name="sieContactInfo" nillable="true" type="impl:ArrayOf_tns3_SieContactInfo"/>
+                </sequence>
+            </complexType>
+        </schema>
+    </wsdl:types>
+
+    <wsdl:message name="searchCustContactByMobileResponse">
+
+        <wsdl:part element="impl:searchCustContactByMobileResponse" name="parameters">
+
+        </wsdl:part>
+
+    </wsdl:message>
+
+    <wsdl:message name="searchTruProfileRequest">
+
+        <wsdl:part element="impl:searchTruProfile" name="parameters">
+
+        </wsdl:part>
+
+    </wsdl:message>
+
+    <wsdl:message name="searchTmvProfileRequest">
+
+        <wsdl:part element="impl:searchTmvProfile" name="parameters">
+
+        </wsdl:part>
+
+    </wsdl:message>
+
+    <wsdl:message name="searchAllCustomerProfileRequest">
+
+        <wsdl:part element="impl:searchAllCustomerProfile" name="parameters">
+
+        </wsdl:part>
+
+    </wsdl:message>
+
+    <wsdl:message name="searchTmvProfileResponse">
+
+        <wsdl:part element="impl:searchTmvProfileResponse" name="parameters">
+
+        </wsdl:part>
+
+    </wsdl:message>
+
+    <wsdl:message name="searchTvsProfileResponse">
+
+        <wsdl:part element="impl:searchTvsProfileResponse" name="parameters">
+
+        </wsdl:part>
+
+    </wsdl:message>
+
+    <wsdl:message name="searchCustContactByProductRequest">
+
+        <wsdl:part element="impl:searchCustContactByProduct" name="parameters">
+
+        </wsdl:part>
+
+    </wsdl:message>
+
+    <wsdl:message name="searchTvsProfileRequest">
+
+        <wsdl:part element="impl:searchTvsProfile" name="parameters">
+
+        </wsdl:part>
+
+    </wsdl:message>
+
+    <wsdl:message name="searchAllCustomerProfileResponse">
+
+        <wsdl:part element="impl:searchAllCustomerProfileResponse" name="parameters">
+
+        </wsdl:part>
+
+    </wsdl:message>
+
+    <wsdl:message name="searchCustContactByMobileRequest">
+
+        <wsdl:part element="impl:searchCustContactByMobile" name="parameters">
+
+        </wsdl:part>
+
+    </wsdl:message>
+
+    <wsdl:message name="searchCustContactByProductResponse">
+
+        <wsdl:part element="impl:searchCustContactByProductResponse" name="parameters">
+
+        </wsdl:part>
+
+    </wsdl:message>
+
+    <wsdl:message name="searchTruProfileResponse">
+
+        <wsdl:part element="impl:searchTruProfileResponse" name="parameters">
+
+        </wsdl:part>
+
+    </wsdl:message>
+
+    <wsdl:portType name="CustomerServices">
+
+        <wsdl:operation name="searchTmvProfile">
+
+            <wsdl:input message="impl:searchTmvProfileRequest" name="searchTmvProfileRequest">
+
+            </wsdl:input>
+
+            <wsdl:output message="impl:searchTmvProfileResponse" name="searchTmvProfileResponse">
+
+            </wsdl:output>
+
+        </wsdl:operation>
+
+        <wsdl:operation name="searchAllCustomerProfile">
+
+            <wsdl:input message="impl:searchAllCustomerProfileRequest" name="searchAllCustomerProfileRequest">
+
+            </wsdl:input>
+
+            <wsdl:output message="impl:searchAllCustomerProfileResponse" name="searchAllCustomerProfileResponse">
+
+            </wsdl:output>
+
+        </wsdl:operation>
+
+        <wsdl:operation name="searchTruProfile">
+
+            <wsdl:input message="impl:searchTruProfileRequest" name="searchTruProfileRequest">
+
+            </wsdl:input>
+
+            <wsdl:output message="impl:searchTruProfileResponse" name="searchTruProfileResponse">
+
+            </wsdl:output>
+
+        </wsdl:operation>
+
+        <wsdl:operation name="searchTvsProfile">
+
+            <wsdl:input message="impl:searchTvsProfileRequest" name="searchTvsProfileRequest">
+
+            </wsdl:input>
+
+            <wsdl:output message="impl:searchTvsProfileResponse" name="searchTvsProfileResponse">
+
+            </wsdl:output>
+
+        </wsdl:operation>
+
+        <wsdl:operation name="searchCustContactByMobile">
+
+            <wsdl:input message="impl:searchCustContactByMobileRequest" name="searchCustContactByMobileRequest">
+
+            </wsdl:input>
+
+            <wsdl:output message="impl:searchCustContactByMobileResponse" name="searchCustContactByMobileResponse">
+
+            </wsdl:output>
+
+        </wsdl:operation>
+
+        <wsdl:operation name="searchCustContactByProduct">
+
+            <wsdl:input message="impl:searchCustContactByProductRequest" name="searchCustContactByProductRequest">
+
+            </wsdl:input>
+
+            <wsdl:output message="impl:searchCustContactByProductResponse" name="searchCustContactByProductResponse">
+
+            </wsdl:output>
+
+        </wsdl:operation>
+
+    </wsdl:portType>
+
+    <wsdl:binding name="CustomerServicesSoapBinding" type="impl:CustomerServices">
+
+        <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="searchTmvProfile">
+
+            <wsdlsoap:operation soapAction=""/>
+
+            <wsdl:input name="searchTmvProfileRequest">
+
+                <wsdlsoap:body use="literal"/>
+
+            </wsdl:input>
+
+            <wsdl:output name="searchTmvProfileResponse">
+
+                <wsdlsoap:body use="literal"/>
+
+            </wsdl:output>
+
+        </wsdl:operation>
+
+        <wsdl:operation name="searchAllCustomerProfile">
+
+            <wsdlsoap:operation soapAction=""/>
+
+            <wsdl:input name="searchAllCustomerProfileRequest">
+
+                <wsdlsoap:body use="literal"/>
+
+            </wsdl:input>
+
+            <wsdl:output name="searchAllCustomerProfileResponse">
+
+                <wsdlsoap:body use="literal"/>
+
+            </wsdl:output>
+
+        </wsdl:operation>
+
+        <wsdl:operation name="searchTruProfile">
+
+            <wsdlsoap:operation soapAction=""/>
+
+            <wsdl:input name="searchTruProfileRequest">
+
+                <wsdlsoap:body use="literal"/>
+
+            </wsdl:input>
+
+            <wsdl:output name="searchTruProfileResponse">
+
+                <wsdlsoap:body use="literal"/>
+
+            </wsdl:output>
+
+        </wsdl:operation>
+
+        <wsdl:operation name="searchTvsProfile">
+
+            <wsdlsoap:operation soapAction=""/>
+
+            <wsdl:input name="searchTvsProfileRequest">
+
+                <wsdlsoap:body use="literal"/>
+
+            </wsdl:input>
+
+            <wsdl:output name="searchTvsProfileResponse">
+
+                <wsdlsoap:body use="literal"/>
+
+            </wsdl:output>
+
+        </wsdl:operation>
+
+        <wsdl:operation name="searchCustContactByMobile">
+
+            <wsdlsoap:operation soapAction=""/>
+
+            <wsdl:input name="searchCustContactByMobileRequest">
+
+                <wsdlsoap:body use="literal"/>
+
+            </wsdl:input>
+
+            <wsdl:output name="searchCustContactByMobileResponse">
+
+                <wsdlsoap:body use="literal"/>
+
+            </wsdl:output>
+
+        </wsdl:operation>
+
+        <wsdl:operation name="searchCustContactByProduct">
+
+            <wsdlsoap:operation soapAction=""/>
+
+            <wsdl:input name="searchCustContactByProductRequest">
+
+                <wsdlsoap:body use="literal"/>
+
+            </wsdl:input>
+
+            <wsdl:output name="searchCustContactByProductResponse">
+
+                <wsdlsoap:body use="literal"/>
+
+            </wsdl:output>
+
+        </wsdl:operation>
+
+    </wsdl:binding>
+
+    <wsdl:service name="CustomerServicesService">
+
+        <wsdl:port binding="impl:CustomerServicesSoapBinding" name="CustomerServices">
+
+            <wsdlsoap:address location="http://172.19.195.57:10001/MCPServicesENV3/services/CustomerServices"/>
+
+        </wsdl:port>
+
+    </wsdl:service>
 
 </wsdl:definitions>

@@ -1,7 +1,6 @@
 package com.ais.webservice.service;
 
 import com.trues.webservice.service.TRUEWService;
-import com.trues.webservice.service.customerservice.CustomerServicesServiceStub;
 
 /**
  * Created by Administrator on 17/09/2014.
@@ -9,7 +8,13 @@ import com.trues.webservice.service.customerservice.CustomerServicesServiceStub;
 public class MainTest {
 
     public static void main(String[] args) {
-        CustomerServicesServiceStub.SearchTmvProfile pr = new CustomerServicesServiceStub.SearchTmvProfile();
-        TRUEWService.searchTmvProfile("aaa", pr);
+       /* SearchTmvProfile pr = new SearchTmvProfile();
+        TRUEWService.searchTmvProfile("aaa", pr);*/
+        /*SearchTruProfile ob = new SearchTruProfile();
+        ob.setKeyValue("aa");
+        ob.setUserId("ff");
+        ob.setPassword("dd");
+        TRUEWService.searchTruProfile("dd", ob);*/
+        TRUEWService.searchTvsProfile("dd", null);
     }
 }

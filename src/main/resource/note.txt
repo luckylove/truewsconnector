@@ -1,0 +1,3 @@
+CustomerServices.wsdl
+- modify item ->tmvCustomerInfo
+- modify item ->truCustomerInfo

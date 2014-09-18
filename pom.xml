@@ -13,6 +13,10 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>3.0.5.RELEASE</spring.version>
+		<axis.version>1.5.4</axis.version>
+		<axis.axiom>1.2.10</axis.axiom>
+		<axis.jaxbri>1.5.4</axis.jaxbri>
+		<axis.jaxb-impl>2.2.7</axis.jaxb-impl>
 	</properties>
 	<dependencies>
 		<!-- Spring 3 dependencies -->
@@ -101,12 +105,12 @@
         <dependency>
             <groupId>org.apache.axis2</groupId>
             <artifactId>axis2</artifactId>
-            <version>1.5</version>
+            <version>${axis.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.axis2</groupId>
             <artifactId>axis2-kernel</artifactId>
-            <version>1.5</version>
+            <version>${axis.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
@@ -129,7 +133,7 @@
         <dependency>
             <groupId>org.apache.ws.commons.axiom</groupId>
             <artifactId>axiom-api</artifactId>
-            <version>1.2.8</version>
+            <version>${axis.axiom}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>jaxen</artifactId>
@@ -140,7 +144,7 @@
         <dependency>
             <groupId>org.apache.ws.commons.axiom</groupId>
             <artifactId>axiom-impl</artifactId>
-            <version>1.2.8</version>
+            <version>${axis.axiom}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.axis2</groupId>
@@ -157,18 +161,18 @@
             <artifactId>axis2-transport-local</artifactId>
             <version>1.5</version>
         </dependency>
+
+
         <dependency>
             <groupId>org.apache.axis2</groupId>
             <artifactId>axis2-jaxbri</artifactId>
-            <version>1.5.1</version>
+            <version>${axis.jaxbri}</version>
         </dependency>
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
             <artifactId>jaxb-impl</artifactId>
-            <version>2.2.3</version>
+            <version>${axis.jaxb-impl}</version>
         </dependency>
-
-
 
     </dependencies>
     <build>
@@ -204,12 +208,12 @@
                     <dependency>
                         <groupId>org.apache.axis2</groupId>
                         <artifactId>axis2-jaxbri</artifactId>
-                        <version>1.5.1</version>
+                        <version>${axis.jaxbri}</version>
                     </dependency>
                     <dependency>
                         <groupId>com.sun.xml.bind</groupId>
                         <artifactId>jaxb-impl</artifactId>
-                        <version>2.2.3</version>
+                        <version>${axis.jaxb-impl}</version>
                     </dependency>
                 </dependencies>
                 <executions>
@@ -221,7 +225,7 @@
                         <configuration>
                             <packageName>com.trues.webservice.service.customerservice</packageName>
                             <wsdlFile>${basedir}/src/main/wsdl/CustomerServices/CustomerServices.wsdl</wsdlFile>
-                            <databindingName>adb</databindingName>
+                            <databindingName>jaxbri</databindingName>
                         </configuration>
                     </execution>
                 </executions>
