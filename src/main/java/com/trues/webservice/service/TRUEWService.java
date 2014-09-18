@@ -11,9 +11,11 @@ import com.trues.webservice.util.TRUEUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
+import th.co.tit.ccbint.balance.datatype.AllCustomerServiceInfo;
 import th.co.tit.ccbint.balance.datatype.TmvCustomerServiceInfo;
 import th.co.tit.ccbint.balance.datatype.TruCustomerServiceInfo;
 import th.co.tit.ccbint.balance.datatype.TvsCustomerServiceInfo;
+import th.co.tit.ccbint.mcp.webservices.SearchAllCustomerProfile;
 import th.co.tit.ccbint.mcp.webservices.SearchTmvProfile;
 import th.co.tit.ccbint.mcp.webservices.SearchTruProfile;
 import th.co.tit.ccbint.mcp.webservices.SearchTvsProfile;
@@ -97,6 +99,10 @@ public class TRUEWService {
 
     public static WSObject<TvsCustomerServiceInfo> searchTvsProfile(String _sessionId, SearchTvsProfile inParams) {
         return CustomerService.searchTvsProfile(_sessionId, activeEnv.getWebServiceConfig(), inParams);
+    }
+
+    public static WSObject<AllCustomerServiceInfo> searchAllCustomerProfile(String _sessionId, SearchAllCustomerProfile inParams) {
+        return CustomerService.searchAllCustomerProfile(_sessionId, activeEnv.getWebServiceConfig(), inParams);
     }
 
     public static void reloadConfig() {

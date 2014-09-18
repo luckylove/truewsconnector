@@ -15,6 +15,7 @@ public class MainTest {
         ob.setUserId("ff");
         ob.setPassword("dd");
         TRUEWService.searchTruProfile("dd", ob);*/
-        TRUEWService.searchTvsProfile("dd", null);
+        //TRUEWService.searchTvsProfile("dd", null);
+        TRUEWService.searchAllCustomerProfile("dd", null);
     }
 }

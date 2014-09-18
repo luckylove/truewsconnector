@@ -10,6 +10,7 @@ import org.apache.axis2.transport.http.HttpTransportProperties;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import th.co.tit.ccbint.balance.datatype.AllCustomerServiceInfo;
 import th.co.tit.ccbint.balance.datatype.TmvCustomerServiceInfo;
 import th.co.tit.ccbint.balance.datatype.TruCustomerServiceInfo;
 import th.co.tit.ccbint.balance.datatype.TvsCustomerServiceInfo;
@@ -144,6 +145,51 @@ public class CustomerService {
 
                 SearchTvsProfileResponse tvsProfileResponse = stub.searchTvsProfile(inParams);
                 result.setResult(tvsProfileResponse.getSearchTvsProfileReturn());
+
+            } catch (Exception e) {
+                result.setErrorCode(1);
+                result.setErrorMsg(e.getMessage());
+                logger.error(_sessionId + " : ", e);
+            }
+        } else {
+            logger.error(_sessionId + " : " + "Can not found the config for " + methodName);
+            result.setErrorMsg(_sessionId + " : " + "Can not found the config for " + methodName);
+            result.setErrorCode(2);
+        }
+        TRUELogUtil.printOutput(logger, _sessionId, methodName, result, null);
+        return result;
+    }
+
+    public static WSObject<AllCustomerServiceInfo> searchAllCustomerProfile(String _sessionId, WebServiceConfig configs, SearchAllCustomerProfile inParams) {
+        String methodName = "searchAllCustomerProfile";
+        Service cf = configs.looupService(methodName);
+        WSObject<AllCustomerServiceInfo> result = new WSObject<AllCustomerServiceInfo>();
+        if (cf != null) {
+            try {
+                CustomerServicesServiceStub stub = new CustomerServicesServiceStub(cf.getEndpoint());
+                stub._getServiceClient().getOptions().setTimeOutInMilliSeconds(cf.getTimeout());
+
+                if (StringUtils.isNotEmpty(cf.getUsername()) || StringUtils.isNotEmpty(cf.getPassword())) {
+                    HttpTransportProperties.Authenticator auth = new HttpTransportProperties.Authenticator();
+                    if (StringUtils.isNotEmpty(cf.getUsername())) {
+                        auth.setUsername(cf.getUsername());
+                    }
+                    if (StringUtils.isNotEmpty(cf.getPassword())) {
+                        auth.setPassword(cf.getPassword());
+                    }
+                    stub._getServiceClient().getOptions().setProperty(org.apache.axis2.transport.http.HTTPConstants.AUTHENTICATE, auth);
+                }
+                //override by default param
+                Map<String, Param> params = cf.getParams();
+                if (inParams == null) {
+                    inParams = new SearchAllCustomerProfile();
+                }
+
+                TRUEUtils.overrideFromParams(inParams, params);
+                TRUELogUtil.printInput(logger, _sessionId, methodName, cf, null, inParams);
+
+                SearchAllCustomerProfileResponse allCustomerProfileResponse = stub.searchAllCustomerProfile(inParams);
+                result.setResult(allCustomerProfileResponse.getSearchAllCustomerProfileReturn());
 
             } catch (Exception e) {
                 result.setErrorCode(1);

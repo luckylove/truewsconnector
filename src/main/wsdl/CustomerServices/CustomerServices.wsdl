@@ -53,7 +53,7 @@
             </element>
             <complexType name="ArrayOf_tns2_BCTruCustomerInfo">
                 <sequence>
-                    <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:BCTruCustomerInfo"/>
+                    <element maxOccurs="unbounded" minOccurs="0" name="bctruCustomerInfo" type="tns2:BCTruCustomerInfo"/>
                 </sequence>
             </complexType>
             <complexType name="ArrayOf_tns2_TruCustomerInfo">
