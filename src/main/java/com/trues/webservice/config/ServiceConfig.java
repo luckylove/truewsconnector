@@ -1,22 +1,21 @@
 package com.trues.webservice.config;
 
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.converters.SingleValueConverter;
+import com.thoughtworks.xstream.converters.extended.NamedMapConverter;
+import com.thoughtworks.xstream.io.xml.StaxDriver;
 import com.trues.webservice.config.model.*;
-import org.apache.commons.digester3.Digester;
-import org.apache.commons.digester3.binder.AbstractRulesModule;
-import org.apache.commons.digester3.binder.DigesterLoader;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import static org.apache.commons.digester3.binder.DigesterLoader.newLoader;
-
-public class ServiceConfig extends AbstractRulesModule {
+public class ServiceConfig /*extends AbstractRulesModule */{
 
     private static Environments  environments;
 
-    @Override
+   /* @Override
     protected void configure()
     {
         forPattern( "resources/environments" ).createObject().ofType( Environments.class ).then()
@@ -28,14 +27,33 @@ public class ServiceConfig extends AbstractRulesModule {
         forPattern("resources/environments/env/webService/service/username").setBeanProperty();
         forPattern("resources/environments/env/webService/service/password").setBeanProperty();
         forPattern("resources/environments/env/webService/service/params/param").createObject().ofType(Param.class).then().setProperties().then().setNext("addParam");
-    }
+    }*/
 
     public static Environments parse(InputStream inputStream) throws IOException, SAXException {
-        DigesterLoader loader = newLoader( new ServiceConfig() )
+        XStream xstream = new XStream(new StaxDriver());
+        xstream.ignoreUnknownElements();
+        //xstream.processAnnotations(Config.class);
+        xstream.alias("resources", Resources.class);
+        xstream.alias("environments", Environments.class);
+        xstream.useAttributeFor(Environments.class, "active");
+        xstream.addImplicitMap(Environments.class, "envs", "env", Env.class, "name");
+        xstream.useAttributeFor(Env.class, "name");
+        xstream.aliasField("webService", Env.class, "webServiceConfig");
+        xstream.alias("webService", WebServiceConfig.class);
+        xstream.addImplicitMap(WebServiceConfig.class, "serviceMap", "service", Service.class, "name");
+        xstream.useAttributeFor(Service.class, "name");
+        xstream.aliasField("params", Service.class, "innerParams");
+        xstream.registerConverter(new NamedMapConverter(xstream.getMapper(), "param", "name", String.class, "value",
+                String.class, true, true, xstream.getConverterLookup()));
+
+        Resources environments = (Resources)xstream.fromXML(inputStream);
+        ServiceConfig.environments = environments.getEnvironments();
+
+       /* DigesterLoader loader = newLoader( new ServiceConfig() )
                 .setNamespaceAware( true )
                 .setXIncludeAware( true );
         Digester digester = loader.newDigester();
-        ServiceConfig.environments = digester.parse(inputStream);
+        ServiceConfig.environments = digester.parse(inputStream);*/
         return  ServiceConfig.environments;
     }
 }

@@ -18,7 +18,9 @@ public class Service {
     private String password;
     private int timeout;
 
-    private Map<String, Param> params = new HashMap<String, Param>(5);
+    private Map<String, String> innerParams = new HashMap<String, String>(5);
+
+    private Map<String, Param> params;
 
     public int getTimeout() {
         if (timeout == 0) {
@@ -67,6 +69,15 @@ public class Service {
     }
 
     public Map<String, Param> getParams() {
+        if (innerParams != null && !innerParams.isEmpty() && params == null) {
+            params = new HashMap<String, Param>(5);
+            for (Map.Entry<String, String> entry : innerParams.entrySet()) {
+                Param p = new Param();
+                p.setName(entry.getKey());
+                p.setValue(entry.getValue());
+                params.put(entry.getKey(), p);
+            }
+        }
         return params;
     }
 
