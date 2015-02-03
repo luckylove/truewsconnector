@@ -3,27 +3,17 @@ package com.trues.webservice.service;
 import com.trues.webservice.config.ServiceConfig;
 import com.trues.webservice.config.model.Env;
 import com.trues.webservice.config.model.Environments;
-import com.trues.webservice.config.model.Service;
-import com.trues.webservice.config.model.WebServiceConfig;
-import com.trues.webservice.service.customerservice.CustomerService;
+import com.trues.webservice.service.customerservice.*;
+import com.trues.webservice.service.model.SearchTmvProfileModel;
 import com.trues.webservice.service.model.WSObject;
 import com.trues.webservice.util.TRUEUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
-import th.co.tit.ccbint.balance.datatype.AllCustomerServiceInfo;
-import th.co.tit.ccbint.balance.datatype.TmvCustomerServiceInfo;
-import th.co.tit.ccbint.balance.datatype.TruCustomerServiceInfo;
-import th.co.tit.ccbint.balance.datatype.TvsCustomerServiceInfo;
-import th.co.tit.ccbint.mcp.webservices.SearchAllCustomerProfile;
-import th.co.tit.ccbint.mcp.webservices.SearchTmvProfile;
-import th.co.tit.ccbint.mcp.webservices.SearchTruProfile;
-import th.co.tit.ccbint.mcp.webservices.SearchTvsProfile;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.util.Map;
 
 
 /**
@@ -42,7 +32,7 @@ public class TRUEWService {
 
     private static String path;
 
-    static {
+    /*static {
         try {
             initService();
         } catch (Exception e) {
@@ -50,7 +40,7 @@ public class TRUEWService {
             throw new RuntimeException("Can not start web service");
         }
     }
-
+*/
     public static void initService() throws Exception {
 
         if (serviceStart == false) {
@@ -75,37 +65,34 @@ public class TRUEWService {
             //create service instance
             serviceStart = true;
             logger.info("===== DONE: Init service =====");
-            /*if (StringUtils.isNotEmpty(activeEnv.getKeyStore())) {
-                logger.info("=====  Init SSL Context ===== " + activeEnv.getKeyStore());
-                System.setProperty("javax.net.ssl.trustStore", activeEnv.getKeyStore());
-                System.setProperty("javax.net.ssl.keyStore", activeEnv.getKeyStore());
-                System.setProperty("-Djavax.net.ssl.keyStorePassword", "123456");
-                System.setProperty("javax.net.debug","all");
-                System.setProperty("java.security.debug","all");
-            }*/
-
-            System.setProperty("axis.socketSecureFactory",
-                    "org.apache.axis.components.net.SunFakeTrustSocketFactory");
         }
     }
 
-    public static WSObject<TmvCustomerServiceInfo> searchTmvProfile(String _sessionId, SearchTmvProfile inParams) {
-        return CustomerService.searchTmvProfile(_sessionId, activeEnv.getWebServiceConfig(), inParams);
+    public static WSObject<TmvCustomerServiceInfo> searchTmvProfile(String _sessionId, SearchTmvProfileModel inParams) throws Exception {
+        initService();
+        logger.info("===== call method : searchTmvProfile");
+        WSObject<TmvCustomerServiceInfo> tmvCustomerServiceInfoWSObject = CustomerService.searchTmvProfile(_sessionId, activeEnv.getWebServiceConfig(), inParams);
+        logger.info("===== return call method : searchTmvProfile");
+        return tmvCustomerServiceInfoWSObject;
     }
 
-    public static WSObject<TruCustomerServiceInfo> searchTruProfile(String _sessionId, SearchTruProfile inParams) {
+    public static WSObject<TruCustomerServiceInfo> searchTruProfile(String _sessionId, SearchTmvProfileModel inParams) throws Exception {
+        initService();
         return CustomerService.searchTruProfile(_sessionId, activeEnv.getWebServiceConfig(), inParams);
     }
 
-    public static WSObject<TvsCustomerServiceInfo> searchTvsProfile(String _sessionId, SearchTvsProfile inParams) {
+    public static WSObject<TvsCustomerServiceInfo> searchTvsProfile(String _sessionId, SearchTmvProfileModel inParams) throws Exception {
+        initService();
         return CustomerService.searchTvsProfile(_sessionId, activeEnv.getWebServiceConfig(), inParams);
     }
 
-    public static WSObject<AllCustomerServiceInfo> searchAllCustomerProfile(String _sessionId, SearchAllCustomerProfile inParams) {
+    public static WSObject<AllCustomerServiceInfo> searchAllCustomerProfile(String _sessionId, SearchTmvProfileModel inParams) throws Exception {
+        initService();
         return CustomerService.searchAllCustomerProfile(_sessionId, activeEnv.getWebServiceConfig(), inParams);
     }
 
-    public static void reloadConfig() {
+
+    /*public static void reloadConfig() {
         if (path != null && activeEnv != null) {
             logger.info("===== Reload webservice config =====" );
             try {
@@ -128,7 +115,7 @@ public class TRUEWService {
             }
             logger.info("===== DONE: Reload webservice config =====" );
         }
-    }
+    }*/
 
 
 
